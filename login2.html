@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log In Form</title>
+</head>
+
+<style>
+
+    body {
+    background-color: #FFEFF2; 
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+
+    .container {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 20px;
+    width: 300px;
+    text-align: center;
+    }
+
+    .pinkie-pie {
+    width: 150px;
+    height: auto;
+    }
+
+    h1 {
+    color: #FF1493; 
+    margin-bottom: 20px;
+    }
+
+    .form-group {
+    text-align: left;
+    margin-bottom: 15px;
+    }
+
+    .button-group {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    }
+
+    button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    }
+
+    .submit-btn {
+    background-color: #FF69B4;
+    color: #FFFFFF;
+        }
+
+    .reset-btn {
+    background-color: #FFF0F5;
+    color: #FF69B4;
+    }
+
+    </style>
+
+<body>
+<div class="container">
+    <div class="form-section">
+        <img src="pinkie.png" alt="Pinkie Pie" class="pinkie-pie">
+        <h1>LOG IN</h1>
+        <br>
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="submit-btn" onclick="checkLogin()">Login</button>
+                <button type="reset" class="reset-btn">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    var C_Username = "ruby";
+    var C_Password = '12345';
+    
+    var attempts = 0;
+    var maxAttempts = 3;
+
+    function checkLogin() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (attempts >= maxAttempts) {
+            alert("Account locked. Too many failed attempts.");
+            return;
+        }
+
+        if (username === C_Username && password === C_Password) {
+            alert("Access granted!");
+        } 
+        else {
+ 
+            attempts++;
+            alert("Login failed. Attempts Left: " + (maxAttempts - attempts));
+
+            if (attempts === maxAttempts) {
+                alert("Account locked. Too many failed attempts.");
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
